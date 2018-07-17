@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Building : MonoBehaviour {
+[CreateAssetMenu(fileName = "New Building", menuName = "Buildings")]
+public class Building : ScriptableObject
+{
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	[SerializeField] new string name;
+	[SerializeField] bool housing;
+	[SerializeField] bool storing;
+	[SerializeField] bool producing;
+	[SerializeField] bool consuming;
+	[SerializeField] Ressource ressource;
+	[SerializeField] int[] buildCost;
+
+	void BuildCost()
+	{
+
 	}
 }
