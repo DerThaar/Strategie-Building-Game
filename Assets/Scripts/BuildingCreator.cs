@@ -13,13 +13,9 @@ public class BuildingCreator : EditorWindow
 	int ammountOfPeople;
 	int ammountOfStorage;	
 	GameObject model;
+	Resource[] resource;
+	int numberOfResources;
 
-	enum Storage
-	{
-		Materials, Consumables
-	}
-
-	Storage storage;
 
 	[MenuItem("Window/BuildingCreator")]
 	public static void ShowWindow()
@@ -44,8 +40,12 @@ public class BuildingCreator : EditorWindow
 		storing = EditorGUILayout.Toggle("Storing", storing);
 		if (storing)
 		{				
-			storage = (Storage)EditorGUILayout.EnumPopup("Can store:", storage);
 			ammountOfStorage = EditorGUILayout.IntField("Ammount Of Storage:", ammountOfStorage);
+			numberOfResources = EditorGUILayout.IntField("Number of stored goods:", numberOfResources);
+			for (int i = 0; i < numberOfResources; i++)
+			{
+				//resource[i] = (Resource)EditorGUILayout.EnumPopup("Can store:", resource);
+			}
 			EditorGUILayout.Space();
 		}
 		

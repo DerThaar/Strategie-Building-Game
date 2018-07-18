@@ -1,10 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Ressource: MonoBehaviour
+public class Ressource : MonoBehaviour
 {
-	public int Wood;
-	public int Stone;
-	public int Iron;
+	public Resource resource;
+	int[] storedGoods;
+
+
+	public int GetStoredGoods(Resource res)
+	{
+		return storedGoods[(int)res];
+	}
 }
+
+public enum Resource
+{
+	Wood,
+	Stone,
+	Iron,
+	Fish,
+	Potato,
+	Beef,
+	Wheet,
+	Flour,
+	Bread,
+}
+

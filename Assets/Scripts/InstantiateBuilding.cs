@@ -11,7 +11,7 @@ public class InstantiateBuilding : MonoBehaviour
 	Vector3 position;
 	Color color;
 	GameObject newBuilding;
-	GameObject currentBuilding;	
+	GameObject currentBuilding;
 
 
 	void Update()
@@ -37,7 +37,7 @@ public class InstantiateBuilding : MonoBehaviour
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			Physics.Raycast(ray, out hitInfo, Mathf.Infinity, LayerMask.GetMask("Terrain"));
 			position = hitInfo.point;
-
+			
 			if (Input.GetButtonUp("Mouse Left") && canBuild)
 			{
 				foreach (Transform child in currentBuilding.transform)
@@ -79,7 +79,7 @@ public class InstantiateBuilding : MonoBehaviour
 		{
 			float gridSize = 1f;
 			Vector3 snapPos;
-			snapPos.x = Mathf.Floor(position.x / gridSize) * gridSize;			
+			snapPos.x = Mathf.Floor(position.x / gridSize) * gridSize;
 			snapPos.z = Mathf.Floor(position.z / gridSize) * gridSize;
 			snapPos.y = position.y;
 			currentBuilding.transform.position = snapPos;
@@ -109,5 +109,11 @@ public class InstantiateBuilding : MonoBehaviour
 	{
 		newBuilding = prefab[1];		
 		Instantiate();
-	}	
+	}
+
+	public void BuildNewStoreHouse()
+	{
+		newBuilding = prefab[2];
+		Instantiate();
+	}
 }
