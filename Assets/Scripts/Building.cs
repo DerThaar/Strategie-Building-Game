@@ -5,17 +5,32 @@ using UnityEngine;
 
 public class Building : MonoBehaviour
 {
-	[SerializeField] new string name;
-	[SerializeField] bool housing;
-	[SerializeField] bool storing;
-	[SerializeField] bool producing;
-	[SerializeField] bool consuming;
-	[SerializeField] Resource[] resourcesToBuild;
-	[SerializeField] int[] ammountOfBuildResources;
+	[SerializeField] GlobalStorage gS;
+	[SerializeField] int[] resourcesToBuild;
+	[SerializeField] Resource[] resources;
+	bool canBeBuilt;
+	int trueCounter;
 
-	private void Awake()
+
+	void Update()
 	{
-		
-	}
+		for (int i = 0; i < resourcesToBuild.Length; i++)
+		{
+			if (gS.storedGoods[(int)resources[i]] >= resourcesToBuild[i])
+			{
+				trueCounter++;
+			}
 
+			if (trueCounter == resourcesToBuild.Length)
+			{
+				canBeBuilt = true;
+				trueCounter = 0;
+			}
+
+			else
+				canBeBuilt = false;
+		}
+
+		print(canBeBuilt);
+	}
 }
